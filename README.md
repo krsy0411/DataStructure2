@@ -1,3 +1,2 @@
-# 스택과 링크표현법
-
-![result](./binaryTree/img/stacktree.png);
+# Traversal2
+![result](./binaryTree/img/traversal2.png);
