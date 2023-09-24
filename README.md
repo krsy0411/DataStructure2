@@ -7,7 +7,7 @@
 ![result](./binaryTree/img/stacktree.png);
 
 # 수식트리 - 9월 19일
-![result](./expresssionTree/img/expressionTree.png);
+![result](./binaryTree/img/expressionTree.png);
 
 # Traversal2
 ![result](./binaryTree/img/traversal2.png);
