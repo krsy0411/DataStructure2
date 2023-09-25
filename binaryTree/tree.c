@@ -1,29 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct TreeNode {
+typedef struct struct node {
     int data;
-    struct TreeNode *left, *right;
-} TreeNode;
+    struct struct node *left, *right;
+} struct node;
 
 // 배열 표현법
-TreeNode n1 = {2.0, NULL, NULL};
-TreeNode n2 = {3.0, NULL, NULL};
-TreeNode n3 = {'+', &n1, &n2};
-TreeNode n4 = {4.0, NULL, NULL};
-TreeNode n5 = {5.0, NULL, NULL};
-TreeNode n6 = {'*', &n4, &n5};
-TreeNode n7 = {'+', &n3, &n6};
-TreeNode n8 = {6.0, NULL, NULL};
-TreeNode n9 = {7.0, NULL, NULL};
-TreeNode n10 = {'/', &n8, &n9};
-TreeNode n11 = {'-', &n7, &n10};
-TreeNode n12 = {9.0, NULL, NULL};
-TreeNode n13 = {'+', &n11, &n12};
-TreeNode *root = &n13;
+struct node n1 = {2.0, NULL, NULL};
+struct node n2 = {3.0, NULL, NULL};
+struct node n3 = {'+', &n1, &n2};
+struct node n4 = {4.0, NULL, NULL};
+struct node n5 = {5.0, NULL, NULL};
+struct node n6 = {'*', &n4, &n5};
+struct node n7 = {'+', &n3, &n6};
+struct node n8 = {6.0, NULL, NULL};
+struct node n9 = {7.0, NULL, NULL};
+struct node n10 = {'/', &n8, &n9};
+struct node n11 = {'-', &n7, &n10};
+struct node n12 = {9.0, NULL, NULL};
+struct node n13 = {'+', &n11, &n12};
+struct node *root = &n13;
 
 //수식 계산 함수
-float evaluation(TreeNode *root) {
+float evaluation(struct node *root) {
     // 만약 루트가 null이면 0 출력
     if(root == NULL)
         return 0;
@@ -53,7 +53,7 @@ float evaluation(TreeNode *root) {
     return 0;
 }
 
-int node_cnt(TreeNode *root) {
+int node_cnt(struct node *root) {
     int cnt = 0;
     // 만약 노드가 null이 아니라면 left와 카운트와 right의 카운트를 더해줍니다.
     if(root != NULL) {
