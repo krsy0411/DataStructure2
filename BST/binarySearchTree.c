@@ -11,24 +11,26 @@ typedef struct TreeNode {
 // initialize TreeNodes data
 TreeNode* initNode(int data, TreeNode* leftChild, TreeNode* rightChild)
 {
-    TreeNode* node = (TreeNode*) malloc(sizeof(TreeNode));
+    TreeNode* node = (TreeNode*)malloc(sizeof(TreeNode));
     node->data = data;
     node->left = leftChild;
     node->right = rightChild;
-    return NULL;
+
+    return node;
 }
 
 // menu : s
-// 자기 자신보다 크면 오른쪽 자식, 작으면 왼쪽 자식
 TreeNode* searchNode(TreeNode* root, int searchValue)
 {
     // 마지막에 방문노드들 출력하기 위한 배열
-    int visitNode[20];
+    int visitNode[30];
     // 방문한 노드의 수
     int cnt = 0;
     // 검색 성공 결과
     int searchData = 0;
+    // root 노드를 참조하는 변수 p 생성
     TreeNode* p = root;
+    // 자기 자신보다 크면 오른쪽 자식, 작으면 왼쪽 자식
     for(int i=0; i<sizeof(visitNode); i++)
     {
         if(p->data == searchValue)
@@ -65,7 +67,7 @@ TreeNode* searchNode(TreeNode* root, int searchValue)
 TreeNode* insertNode(TreeNode* root, int insertData)
 {
     // 마지막에 방문노드들 출력하기 위한 배열
-    int visitNode[20];
+    int visitNode[30];
     // 방문한 노드의 수
     int cnt = 0;
     for(int i=0; i<sizeof(visitNode); i++)
@@ -176,15 +178,15 @@ int main() {
     TreeNode* n2 = initNode(41, n4, n5);
     TreeNode* n1 = initNode(60, n2, n1);
 
-    printf("-----------------------------");
-    printf("| s : 검색                    |");
-    printf("| i : 노드 추가                |");
-    printf("| d : 노드 삭제                |");
-    printf("| t : 중위 순회                |");
-    printf("| I : 노드 추가(반복)           |");
-    printf("| D : 노드 삭제(반복)           |");
-    printf("| c : 종료                    |");
-    printf("-----------------------------");
+    printf("-----------------------------\n");
+    printf("| s : 검색                    |\n");
+    printf("| i : 노드 추가                |\n");
+    printf("| d : 노드 삭제                |\n");
+    printf("| t : 중위 순회                |\n");
+    printf("| I : 노드 추가(반복)           |\n");
+    printf("| D : 노드 삭제(반복)           |\n");
+    printf("| c : 종료                    |\n");
+    printf("-----------------------------\n");
 
     while(conditionLoop) {
         // 반복문 한 번에 입력받을 메뉴와 검색할 값 변수 새로 생성
@@ -192,7 +194,8 @@ int main() {
         int searchValue = 0;
 
         printf("메뉴 입력: ");
-        scanf("%c", &menu_input);
+        menu_input = 's';
+        // scanf("%c", &menu_input);
         printf("\n");
         switch(menu_input)
         {
@@ -202,7 +205,8 @@ int main() {
                 break;
             case 's':
                 printf("검색할 값 입력: ");
-                scanf("%d", &searchValue);
+                searchValue = 64;
+                // scanf("%d", &searchValue);
                 printf("\n");
                 searchNode(n1, searchValue);
                 break;
