@@ -100,16 +100,6 @@ void insertEdgeToMinHeap(struct MinHeap *minHeap, struct Edge edge)
     }
 }
 
-// 최소힙에서 최소 가중치 간선 추출
-struct Edge extractMin(struct MinHeap *minHeap)
-{
-    struct Edge minEdge = minHeap->arr[0];
-    minHeap->arr[0] = minHeap->arr[minHeap->size - 1];
-    minHeap->size--;
-    minHeapify(minHeap, 0);
-    return minEdge;
-}
-
 // 최소힙 재조정
 void minHeapify(struct MinHeap *minHeap, int i)
 {
@@ -132,6 +122,28 @@ void minHeapify(struct MinHeap *minHeap, int i)
     }
 }
 
+struct Edge extractMin(struct MinHeap *minHeap)
+{
+    if (minHeap->size <= 0) {
+        struct Edge invalidEdge;
+        invalidEdge.start = -1;
+        invalidEdge.end = -1;
+        invalidEdge.weight = INF;
+        return invalidEdge;
+    }
+    if (minHeap->size == 1) {
+        minHeap->size--;
+        return minHeap->arr[0];
+    }
+
+    struct Edge minEdge = minHeap->arr[0];
+    minHeap->arr[0] = minHeap->arr[minHeap->size - 1];
+    minHeap->size--;
+    minHeapify(minHeap, 0);
+
+    return minEdge;
+}
+
 // kruskal의 최소 비용 신장 트리 프로그램
 void kruskal(GraphType *g)
 {
@@ -151,6 +163,10 @@ void kruskal(GraphType *g)
     while (edge_accepted < (g->n - 1)) // 간선의 수 < (n-1)
     {
         e = extractMin(minHeap);
+        if (e.start == -1) {
+            // No valid edge found
+            break;
+        }
         uset = set_find(e.start); // 정점 u의 집합 번호
         vset = set_find(e.end); // 정점 v의 집합 번호
         if (uset != vset) { // 서로 속한 집합이 다르면
