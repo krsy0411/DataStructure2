@@ -1,2 +1,2 @@
-# Floyd 알고리즘
-<img src="./img/Floyd.png" />
+# 삽입 정렬
+<img src="./img/insertionSort.png" />
