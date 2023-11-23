@@ -1,2 +1,2 @@
-# 삽입 정렬
-<img src="./img/insertionSort.png" />
+# Shell 정렬
+<img src="./img/shell.png" />
